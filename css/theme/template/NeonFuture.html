@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>Neon Future - Reveal.js Template</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reveal.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/theme/black.min.css">
+    
+    <!-- Neon Future theme -->
+    <style>
+        :root {
+            --neon-pink: #ff2d95;
+            --neon-blue: #0ff0fc;
+            --neon-purple: #8a2be2;
+            --neon-green: #46fc29;
+            --dark-bg: #0a0a16;
+        }
+        
+        .reveal {
+            background: linear-gradient(135deg, var(--dark-bg) 0%, #161636 100%);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        /* Title slide */
+        .reveal .slides section.title-slide {
+            text-align: left;
+            padding: 2rem;
+        }
+        
+        .reveal .slides section.title-slide h1 {
+            font-size: 3.5rem;
+            color: white;
+            margin-bottom: 1rem;
+            text-shadow: 0 0 10px var(--neon-blue), 0 0 20px var(--neon-blue);
+            font-weight: 700;
+        }
+        
+        .reveal .slides section.title-slide h2 {
+            font-size: 2rem;
+            color: var(--neon-pink);
+            margin-bottom: 3rem;
+            font-weight: 300;
+        }
+        
+        .reveal .slides section.title-slide p {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 1.2rem;
+        }
+        
+        /* Regular slides */
+        .reveal .slides section:not(.title-slide) h1,
+        .reveal .slides section:not(.title-slide) h2,
+        .reveal .slides section:not(.title-slide) h3 {
+            color: white;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 0 0 5px var(--neon-blue);
+            border-left: 4px solid var(--neon-blue);
+            padding-left: 15px;
+        }
+        
+        .reveal .slides section:not(.title-slide) h2 {
+            border-color: var(--neon-pink);
+            text-shadow: 0 0 5px var(--neon-pink);
+        }
+        
+        .reveal .slides section:not(.title-slide) h3 {
+            border-color: var(--neon-green);
+            text-shadow: 0 0 5px var(--neon-green);
+        }
+        
+        .reveal p, .reveal li {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 1.5rem;
+            line-height: 1.4;
+        }
+        
+        .reveal strong {
+            color: var(--neon-blue);
+            text-shadow: 0 0 3px var(--neon-blue);
+        }
+        
+        .reveal a {
+            color: var(--neon-pink);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            text-shadow: 0 0 3px var(--neon-pink);
+        }
+        
+        .reveal a:hover {
+            color: white;
+            text-shadow: 0 0 10px white;
+        }
+        
+        /* Code blocks */
+        .reveal code {
+            background: rgba(10, 10, 30, 0.8);
+            padding: 0.2rem 0.4rem;
+            border-radius: 4px;
+            border: 1px solid var(--neon-purple);
+            box-shadow: 0 0 10px var(--neon-purple);
+        }
+        
+        .reveal pre code {
+            max-height: 600px;
+            font-size: 1.2rem;
+            line-height: 1.4;
+        }
+        
+        /* Blockquotes */
+        .reveal blockquote {
+            background: rgba(10, 10, 30, 0.5);
+            border-left: 5px solid var(--neon-green);
+            padding: 1rem;
+            box-shadow: 0 0 15px var(--neon-green);
+            width: 90%;
+        }
+        
+        /* Lists */
+        .reveal ul, .reveal ol {
+            display: block;
+            margin: 1.5rem 0;
+            padding-left: 1.5rem;
+        }
+        
+        .reveal li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .reveal ul li::marker {
+            color: var(--neon-pink);
+            text-shadow: 0 0 5px var(--neon-pink);
+        }
+        
+        .reveal ol li::marker {
+            color: var(--neon-blue);
+            text-shadow: 0 0 5px var(--neon-blue);
+        }
+        
+        /* Images */
+        .reveal section img {
+            border: 2px solid var(--neon-blue);
+            box-shadow: 0 0 20px var(--neon-blue);
+            background: rgba(255, 255, 255, 0.1);
+            max-height: 500px;
+        }
+        
+        /* Tables */
+        .reveal table {
+            border-collapse: collapse;
+            margin: 2rem 0;
+        }
+        
+        .reveal table th {
+            background-color: rgba(255, 45, 149, 0.2);
+            color: white;
+            padding: 0.8rem;
+            border: 1px solid var(--neon-pink);
+            text-shadow: 0 0 5px var(--neon-pink);
+        }
+        
+        .reveal table td {
+            padding: 0.8rem;
+            border: 1px solid var(--neon-blue);
+            color: white;
+        }
+        
+        .reveal table tr:nth-child(even) {
+            background-color: rgba(0, 255, 255, 0.1);
+        }
+        
+        /* Custom classes for special elements */
+        .neon-box {
+            background: rgba(10, 10, 30, 0.6);
+            border: 1px solid var(--neon-blue);
+            box-shadow: 0 0 15px var(--neon-blue);
+            border-radius: 5px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        
+        .neon-highlight {
+            color: var(--neon-green);
+            text-shadow: 0 0 5px var(--neon-green);
+            font-weight: bold;
+        }
+        
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        
+        /* Progress bar and controls */
+        .reveal .progress {
+            height: 5px;
+            background: rgba(255, 255, 255, 0.1);
+        }
+        
+        .reveal .progress span {
+            background: linear-gradient(90deg, var(--neon-pink), var(--neon-blue));
+        }
+        
+        .reveal .controls {
+            color: var(--neon-blue);
+        }
+        
+        /* Transitions */
+        .reveal .slides section {
+            transition: all 0.5s ease;
+        }
+        
+        /* Footer */
+        .reveal .footer {
+            position: absolute;
+            bottom: 15px;
+            left: 15px;
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.5);
+            z-index: 100;
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .reveal .slides section h1 {
+                font-size: 2.2rem;
+            }
+            
+            .reveal .slides section h2 {
+                font-size: 1.8rem;
+            }
+            
+            .grid-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="reveal">
+        <div class="slides">
+            <!-- Title Slide -->
+            <section class="title-slide" data-background-gradient="radial-gradient(#0a0a16, #161636)">
+                <h1>Neon Future</h1>
+                <h2>A Cyberpunk-Inspired Reveal.js Template</h2>
+                <p>Created by Your Name</p>
+                <p><small>Press <span style="color: var(--neon-blue)">→</span> or <span style="color: var(--neon-blue)">Space</span> to navigate</small></p>
+            </section>
+
+            <!-- Introduction -->
+            <section>
+                <h2>Introduction</h2>
+                <p>Welcome to <span class="neon-highlight">Neon Future</span>, a cyberpunk-inspired template for Reveal.js presentations.</p>
+                <p>This template features:</p>
+                <ul>
+                    <li>Vibrant neon colors on dark backgrounds</li>
+                    <li>Smooth animations and transitions</li>
+                    <li>Custom styled elements</li>
+                    <li>Fully responsive design</li>
+                </ul>
+            </section>
+
+            <!-- Features -->
+            <section>
+                <h2>Key Features</h2>
+                <div class="grid-container">
+                    <div class="neon-box">
+                        <h3>Modern Design</h3>
+                        <p>Cyberpunk aesthetic with glowing elements and futuristic feel</p>
+                    </div>
+                    <div class="neon-box">
+                        <h3>Fully Customizable</h3>
+                        <p>Easy to modify colors and styles through CSS variables</p>
+                    </div>
+                    <div class="neon-box">
+                        <h3>Code Highlighting</h3>
+                        <p>Beautiful syntax highlighting for code examples</p>
+                    </div>
+                    <div class="neon-box">
+                        <h3>Responsive Layout</h3>
+                        <p>Looks great on desktop, tablet, and mobile devices</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Code Example -->
+            <section>
+                <h2>Code Example</h2>
+                <p>Here's how to initialize Reveal.js with this template:</p>
+                <pre><code class="javascript" data-trim data-line-numbers>
+// Initialize Reveal.js
+Reveal.initialize({
+    controls: true,
+    progress: true,
+    center: true,
+    hash: true,
+    
+    // Theme options
+    transition: 'slide',
+    backgroundTransition: 'fade',
+    
+    // Custom options for Neon Future
+    neonColors: {
+        primary: '#0ff0fc',
+        accent: '#ff2d95'
+    }
+});
+                </code></pre>
+            </section>
+
+            <!-- Custom Elements -->
+            <section>
+                <h2>Custom Elements</h2>
+                <p>This template includes special CSS classes for emphasis:</p>
+                
+                <p class="neon-highlight">.neon-highlight - For important text</p>
+                
+                <div class="neon-box">
+                    <h3>.neon-box - For content containers</h3>
+                    <p>Perfect for highlighting important information or grouping related content.</p>
+                </div>
+            </section>
+
+            <!-- Conclusion -->
+            <section>
+                <h2>Get Started</h2>
+                <p>To use this template in your Reveal.js presentation:</p>
+                <ol>
+                    <li>Copy the CSS from the neon-future.css file</li>
+                    <li>Add it to your Reveal.js project</li>
+                    <li>Customize the colors and styles as needed</li>
+                    <li>Enjoy your cyberpunk-themed presentation!</li>
+                </ol>
+                
+                <p class="neon-highlight">Contribute to this template on GitHub!</p>
+            </section>
+        </div>
+        
+        <div class="footer">
+            <small>Neon Future Template • Reveal.js</small>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reveal.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/plugin/highlight/highlight.min.js"></script>
+    <script>
+        Reveal.initialize({
+            controls: true,
+            progress: true,
+            center: true,
+            hash: true,
+            transition: 'slide',
+            backgroundTransition: 'fade',
+            plugins: [ RevealHighlight ]
+        });
+    </script>
+</body>
+</html>

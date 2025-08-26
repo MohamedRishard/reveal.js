@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>Neon Future: AI Presentation</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reveal.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/theme/black.min.css">
+    
+    <!-- Neon Future theme -->
+    <style>
+        :root {
+            --neon-pink: #ff2d95;
+            --neon-blue: #0ff0fc;
+            --neon-purple: #8a2be2;
+            --neon-green: #46fc29;
+            --dark-bg: #0a0a16;
+        }
+        
+        .reveal {
+            background: linear-gradient(135deg, var(--dark-bg) 0%, #161636 100%);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        /* Title slide */
+        .reveal .slides section.title-slide {
+            text-align: left;
+            padding: 2rem;
+        }
+        
+        .reveal .slides section.title-slide h1 {
+            font-size: 3.5rem;
+            color: white;
+            margin-bottom: 1rem;
+            text-shadow: 0 0 10px var(--neon-blue), 0 0 20px var(--neon-blue);
+            font-weight: 700;
+        }
+        
+        .reveal .slides section.title-slide h2 {
+            font-size: 2rem;
+            color: var(--neon-pink);
+            margin-bottom: 3rem;
+            font-weight: 300;
+        }
+        
+        .reveal .slides section.title-slide p {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 1.2rem;
+        }
+        
+        /* Regular slides */
+        .reveal .slides section:not(.title-slide) h1,
+        .reveal .slides section:not(.title-slide) h2,
+        .reveal .slides section:not(.title-slide) h3 {
+            color: white;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 0 0 5px var(--neon-blue);
+            border-left: 4px solid var(--neon-blue);
+            padding-left: 15px;
+        }
+        
+        .reveal .slides section:not(.title-slide) h2 {
+            border-color: var(--neon-pink);
+            text-shadow: 0 0 5px var(--neon-pink);
+        }
+        
+        .reveal .slides section:not(.title-slide) h3 {
+            border-color: var(--neon-green);
+            text-shadow: 0 0 5px var(--neon-green);
+        }
+        
+        .reveal p, .reveal li {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 1.5rem;
+            line-height: 1.4;
+        }
+        
+        .reveal strong {
+            color: var(--neon-blue);
+            text-shadow: 0 0 3px var(--neon-blue);
+        }
+        
+        .reveal a {
+            color: var(--neon-pink);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            text-shadow: 0 0 3px var(--neon-pink);
+        }
+        
+        .reveal a:hover {
+            color: white;
+            text-shadow: 0 0 10px white;
+        }
+        
+        /* Code blocks */
+        .reveal code {
+            background: rgba(10, 10, 30, 0.8);
+            padding: 0.2rem 0.4rem;
+            border-radius: 4px;
+            border: 1px solid var(--neon-purple);
+            box-shadow: 0 0 10px var(--neon-purple);
+        }
+        
+        .reveal pre code {
+            max-height: 600px;
+            font-size: 1.2rem;
+            line-height: 1.4;
+        }
+        
+        /* Blockquotes */
+        .reveal blockquote {
+            background: rgba(10, 10, 30, 0.5);
+            border-left: 5px solid var(--neon-green);
+            padding: 1rem;
+            box-shadow: 0 0 15px var(--neon-green);
+            width: 90%;
+        }
+        
+        /* Lists */
+        .reveal ul, .reveal ol {
+            display: block;
+            margin: 1.5rem 0;
+            padding-left: 1.5rem;
+        }
+        
+        .reveal li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .reveal ul li::marker {
+            color: var(--neon-pink);
+            text-shadow: 0 0 5px var(--neon-pink);
+        }
+        
+        .reveal ol li::marker {
+            color: var(--neon-blue);
+            text-shadow: 0 0 5px var(--neon-blue);
+        }
+        
+        /* Images */
+        .reveal section img {
+            border: 2px solid var(--neon-blue);
+            box-shadow: 0 0 20px var(--neon-blue);
+            background: rgba(255, 255, 255, 0.1);
+            max-height: 500px;
+        }
+        
+        /* Tables */
+        .reveal table {
+            border-collapse: collapse;
+            margin: 2rem 0;
+        }
+        
+        .reveal table th {
+            background-color: rgba(255, 45, 149, 0.2);
+            color: white;
+            padding: 0.8rem;
+            border: 1px solid var(--neon-pink);
+            text-shadow: 0 0 5px var(--neon-pink);
+        }
+        
+        .reveal table td {
+            padding: 0.8rem;
+            border: 1px solid var(--neon-blue);
+            color: white;
+        }
+        
+        .reveal table tr:nth-child(even) {
+            background-color: rgba(0, 255, 255, 0.1);
+        }
+        
+        /* Custom classes for special elements */
+        .neon-box {
+            background: rgba(10, 10, 30, 0.6);
+            border: 1px solid var(--neon-blue);
+            box-shadow: 0 0 15px var(--neon-blue);
+            border-radius: 5px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        
+        .neon-highlight {
+            color: var(--neon-green);
+            text-shadow: 0 0 5px var(--neon-green);
+            font-weight: bold;
+        }
+        
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        
+        /* Progress bar and controls */
+        .reveal .progress {
+            height: 5px;
+            background: rgba(255, 255, 255, 0.1);
+        }
+        
+        .reveal .progress span {
+            background: linear-gradient(90deg, var(--neon-pink), var(--neon-blue));
+        }
+        
+        .reveal .controls {
+            color: var(--neon-blue);
+        }
+        
+        /* Transitions */
+        .reveal .slides section {
+            transition: all 0.5s ease;
+        }
+        
+        /* Footer */
+        .reveal .footer {
+            position: absolute;
+            bottom: 15px;
+            left: 15px;
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.5);
+            z-index: 100;
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .reveal .slides section h1 {
+                font-size: 2.2rem;
+            }
+            
+            .reveal .slides section h2 {
+                font-size: 1.8rem;
+            }
+            
+            .grid-container {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        /* AI-specific elements */
+        .brain-icon {
+            font-size: 5rem;
+            color: var(--neon-blue);
+            text-shadow: 0 0 15px var(--neon-blue);
+            margin-bottom: 1rem;
+        }
+        
+        .timeline {
+            border-left: 3px solid var(--neon-purple);
+            border-bottom-right-radius: 4px;
+            border-top-right-radius: 4px;
+            position: relative;
+            margin: 2rem 0;
+            padding: 0 0 0 2rem;
+            list-style: none;
+        }
+        
+        .timeline .event {
+            position: relative;
+            margin-bottom: 2rem;
+        }
+        
+        .timeline .event:before {
+            content: "";
+            position: absolute;
+            left: -2.65rem;
+            top: 0.3rem;
+            display: block;
+            width: 1.2rem;
+            height: 1.2rem;
+            border: 3px solid var(--neon-green);
+            border-radius: 50%;
+            background: var(--dark-bg);
+        }
+        
+        .timeline .event:after {
+            content: "";
+            position: absolute;
+            left: -2.05rem;
+            top: 0.9rem;
+            display: block;
+            width: 0.6rem;
+            height: 0.6rem;
+            border-radius: 50%;
+            background: var(--neon-green);
+            box-shadow: 0 0 5px var(--neon-green);
+        }
+        
+        .ai-badge {
+            display: inline-block;
+            background: rgba(255, 45, 149, 0.2);
+            color: var(--neon-pink);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            border: 1px solid var(--neon-pink);
+            font-size: 1.2rem;
+            margin: 0.5rem 0.5rem 0.5rem 0;
+            text-shadow: 0 0 3px var(--neon-pink);
+        }
+    </style>
+</head>
+<body>
+    <div class="reveal">
+        <div class="slides">
+            <!-- Title Slide -->
+            <section class="title-slide" data-background-gradient="radial-gradient(#0a0a16, #161636)">
+                <h1>Artificial Intelligence</h1>
+                <h2>The Future is Now</h2>
+                <p>Exploring the world of AI and its impact on society</p>
+                <p><small>Press <span style="color: var(--neon-blue)">→</span> or <span style="color: var(--neon-blue)">Space</span> to navigate</small></p>
+            </section>
+
+            <!-- What is AI -->
+            <section>
+                <h2>What is Artificial Intelligence?</h2>
+                <div class="brain-icon">🧠</div>
+                <p>AI refers to the simulation of human intelligence in machines that are programmed to think, learn, and solve problems.</p>
+                <div class="grid-container">
+                    <div class="neon-box">
+                        <h3>Narrow AI</h3>
+                        <p>Designed for specific tasks (e.g., facial recognition, voice assistants)</p>
+                    </div>
+                    <div class="neon-box">
+                        <h3>General AI</h3>
+                        <p>Hypothetical AI with human-like cognitive abilities</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- History of AI -->
+            <section>
+                <h2>History of AI</h2>
+                <ul class="timeline">
+                    <li class="event">
+                        <h3>1950s</h3>
+                        <p>Alan Turing proposes the Turing Test</p>
+                    </li>
+                    <li class="event">
+                        <h3>1956</h3>
+                        <p>Term "Artificial Intelligence" coined at Dartmouth Conference</p>
+                    </li>
+                    <li class="event">
+                        <h3>1997</h3>
+                        <p>IBM's Deep Blue defeats chess champion Garry Kasparov</p>
+                    </li>
+                    <li class="event">
+                        <h3>2011</h3>
+                        <p>IBM Watson wins Jeopardy! against champions</p>
+                    </li>
+                    <li class="event">
+                        <h3>2016</h3>
+                        <p>AlphaGo defeats world champion in Go</p>
+                    </li>
+                </ul>
+            </section>
+
+            <!-- AI Technologies -->
+            <section>
+                <h2>Key AI Technologies</h2>
+                <div class="grid-container">
+                    <div class="neon-box">
+                        <h3>Machine Learning</h3>
+                        <p>Systems that learn from data without explicit programming</p>
+                    </div>
+                    <div class="neon-box">
+                        <h3>Neural Networks</h3>
+                        <p>Computing systems inspired by the human brain</p>
+                    </div>
+                    <div class="neon-box">
+                        <h3>Natural Language Processing</h3>
+                        <p>Enabling machines to understand and process human language</p>
+                    </div>
+                    <div class="neon-box">
+                        <h3>Computer Vision</h3>
+                        <p>Machines that can interpret and understand visual information</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- AI Applications -->
+            <section>
+                <h2>AI Applications</h2>
+                <p>AI is transforming industries across the globe:</p>
+                
+                <span class="ai-badge">Healthcare</span>
+                <span class="ai-badge">Finance</span>
+                <span class="ai-badge">Transportation</span>
+                <span class="ai-badge">Education</span>
+                <span class="ai-badge">Entertainment</span>
+                <span class="ai-badge">Manufacturing</span>
+                
+                <div class="neon-box">
+                    <h3>Real-world examples</h3>
+                    <ul>
+                        <li>Medical diagnosis systems</li>
+                        <li>Fraud detection in banking</li>
+                        <li>Self-driving vehicles</li>
+                        <li>Personalized learning platforms</li>
+                        <li>Recommendation algorithms</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- AI Ethics -->
+            <section>
+                <h2>Ethical Considerations</h2>
+                <div class="grid-container">
+                    <div class="neon-box">
+                        <h3>Bias in AI</h3>
+                        <p>AI systems can perpetuate and amplify human biases present in training data</p>
+                    </div>
+                    <div class="neon-box">
+                        <h3>Privacy Concerns</h3>
+                        <p>Mass data collection for AI raises significant privacy issues</p>
+                    </div>
+                    <div class="neon-box">
+                        <h3>Job Displacement</h3>
+                        <p>Automation may replace certain jobs while creating new ones</p>
+                    </div>
+                    <div class="neon-box">
+                        <h3>Accountability</h3>
+                        <p>Determining responsibility when AI systems cause harm</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Future of AI -->
+            <section>
+                <h2>The Future of AI</h2>
+                <p>What can we expect in the coming decades?</p>
+                
+                <blockquote>
+                    "Artificial intelligence will reach human levels by around 2029. Follow that out further to, say, 2045, and we will have multiplied the intelligence, the human biological machine intelligence of our civilization a billion-fold."
+                    <footer>- Ray Kurzweil</footer>
+                </blockquote>
+                
+                <div class="neon-box">
+                    <h3>Potential developments</h3>
+                    <ul>
+                        <li>Advanced human-AI collaboration</li>
+                        <li>Solving complex global challenges</li>
+                        <li>Personalized AI assistants</li>
+                        <li>Ethical AI frameworks</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Conclusion -->
+            <section>
+                <h2>Embracing the AI Revolution</h2>
+                <p>AI presents incredible opportunities alongside significant challenges.</p>
+                
+                <div class="neon-box">
+                    <h3>Key takeaways</h3>
+                    <ol>
+                        <li>AI is already transforming our world</li>
+                        <li>Responsible development is crucial</li>
+                        <li>Continuous learning will be essential</li>
+                        <li>Human-AI collaboration is the future</li>
+                    </ol>
+                </div>
+                
+                <p class="neon-highlight">The future isn't just about intelligent machines—it's about intelligent collaboration between humans and machines.</p>
+            </section>
+        </div>
+        
+        <div class="footer">
+            <small>Neon Future Template • AI Presentation • Reveal.js</small>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reveal.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/plugin/highlight/highlight.min.js"></script>
+    <script>
+        Reveal.initialize({
+            controls: true,
+            progress: true,
+            center: true,
+            hash: true,
+            transition: 'slide',
+            backgroundTransition: 'fade',
+            plugins: [ RevealHighlight ]
+        });
+    </script>
+</body>
+</html>
